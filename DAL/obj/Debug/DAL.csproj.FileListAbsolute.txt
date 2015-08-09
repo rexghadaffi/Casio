@@ -1,0 +1,7 @@
+c:\users\wilber\documents\visual studio 2012\Projects\DAL\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+c:\users\wilber\documents\visual studio 2012\Projects\DAL\DAL\bin\Debug\DAL.dll.config
+c:\users\wilber\documents\visual studio 2012\Projects\DAL\DAL\bin\Debug\DAL.dll
+c:\users\wilber\documents\visual studio 2012\Projects\DAL\DAL\bin\Debug\DAL.pdb
+c:\users\wilber\documents\visual studio 2012\Projects\DAL\DAL\obj\Debug\DAL.dll
+c:\users\wilber\documents\visual studio 2012\Projects\DAL\DAL\obj\Debug\DAL.pdb
+C:\Users\Wilber\Documents\Visual Studio 2012\Projects\DAL\DAL\bin\Debug\MySql.Data.dll
