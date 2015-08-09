@@ -1,0 +1,96 @@
+<html>
+<title>Online Clearance</title>
+<head>
+<link href="bootstrap-3/css/bootstrap.css" rel="stylesheet" />
+<link href="metro-bootstrap/metro-bootstrap.css" rel="stylesheet" />
+<link href="bootstrap-table/dist/bootstrap-table.min.css" rel="stylesheet" />
+<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+
+<style>
+</style>
+ 
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#"><span class="fa fa-home"></span>&nbsp;Online Clearance</a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-wrench fa-fw"></span>&nbsp;Maintenance <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Action</a></li>
+          <li><a href="#">Another action</a></li>
+          <li><a href="#">Something else here</a></li>
+          <li><a href="#">Separated link</a></li>
+          <li><a href="#">One more separated link</a></li>
+        </ul>
+      </li>
+    </ul>    
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Welcome, Bitch</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog" ></span>&nbsp;Settings <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Accounts</a></li>
+          <li><a href="#">Profile</a></li>
+		  <li class="divider"></li>         
+          <li><a href="#">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>
+<div class="container">
+
+	<table class="table">
+	<thead style="font-size:12px">
+	 <th>
+	   Some Header 1
+	 </th>
+	 <th>
+	   Some Header 2 
+	 </th>
+	 <th>
+	   Some Header 3
+	 </th>
+	</thead>
+	<tbody style="font-size:11px">
+	<tr>
+	<td>Some Example 1</td>
+	<td>Some Example 2</td>
+	<td>Some Example 3</td>
+	</tr>
+	</tbody>
+	</table>
+
+</div>
+ <script src="scripts/jquery-2.1.4.min.js"></script>
+ <script src="bootstrap-3/js/bootstrap.js"></script>
+ <script src="bootstrap-table/dist/bootstrap-table.min.js"></script>
+ <script src="bootstrap-table/dist/extensions/export/bootstrap-table-export.min.js"></script>
+ <script type="text/javascript">
+  $(".table").bootstrapTable({
+            cache: false,
+            pagination: true,
+            striped: true,
+            pagination: true,
+            pageSize: 50,
+            pageList: [10, 25, 50, 100, 200],
+            search: true,
+			showColumns: true,
+            clickToSelect: true,           
+        });
+ </script>
+</body>
+</html>
