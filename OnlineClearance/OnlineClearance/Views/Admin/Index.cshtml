@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Model.Admin>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of Admin Accounts</h2>
+<a href="Admin/Create">Add</a>
+<table class="table">
+    <thead>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Middlename)
+        </th>
+        <th></th>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Middlename)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>

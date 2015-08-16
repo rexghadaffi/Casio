@@ -1,0 +1,17 @@
+c:\users\wilber\documents\visual studio 2012\Projects\DAL\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+c:\users\wilber\documents\visual studio 2012\Projects\DAL\DAL\bin\Debug\DAL.dll.config
+c:\users\wilber\documents\visual studio 2012\Projects\DAL\DAL\bin\Debug\DAL.dll
+c:\users\wilber\documents\visual studio 2012\Projects\DAL\DAL\bin\Debug\DAL.pdb
+c:\users\wilber\documents\visual studio 2012\Projects\DAL\DAL\obj\Debug\DAL.dll
+c:\users\wilber\documents\visual studio 2012\Projects\DAL\DAL\obj\Debug\DAL.pdb
+C:\Users\Wilber\Documents\Visual Studio 2012\Projects\DAL\DAL\bin\Debug\MySql.Data.dll
+C:\Users\Wilber\documents\visual studio 2012\Projects\DAL\DAL\bin\Debug\Model.dll
+C:\Users\Wilber\documents\visual studio 2012\Projects\DAL\DAL\bin\Debug\Model.pdb
+C:\Users\Wilber\Documents\GitHub\Casio\DAL\bin\Debug\DAL.dll.config
+C:\Users\Wilber\Documents\GitHub\Casio\DAL\bin\Debug\DAL.dll
+C:\Users\Wilber\Documents\GitHub\Casio\DAL\bin\Debug\DAL.pdb
+C:\Users\Wilber\Documents\GitHub\Casio\DAL\bin\Debug\Model.dll
+C:\Users\Wilber\Documents\GitHub\Casio\DAL\bin\Debug\Model.pdb
+C:\Users\Wilber\Documents\GitHub\Casio\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\Wilber\Documents\GitHub\Casio\DAL\obj\Debug\DAL.dll
+C:\Users\Wilber\Documents\GitHub\Casio\DAL\obj\Debug\DAL.pdb
