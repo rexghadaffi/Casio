@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model;
 using MySql.Data.MySqlClient;
-namespace DAL
+using OnlineClearance.Models;
+
+
+namespace OnlineClearance.DAL
 {
     public class AdminContext : DataAccessHelper
     {
@@ -22,7 +24,13 @@ namespace DAL
         {
             get
             {
-                return new List<string> { "userName", "userPassword", "userStatus", "userTypeID" };
+                return new List<string> { "userName",
+                                          "userPassword",
+                                          "userStatus",
+                                          "userTypeID",
+                                          "firstName",
+                                          "lastName",
+                                          "middleName"};
             }
         }
 
@@ -48,14 +56,15 @@ namespace DAL
                         admin.ID = Convert.ToInt32(rd[_pkField]);
                         admin.Username = rd["userName"].ToString();
                         admin.Password = rd["userPassword"].ToString();
-                        //admin.Status = Convert.ToBoolean(rd["userStatus"]);
-                        //admin.RoleID = Convert.ToInt32(rd["userTypeID"]);
+                        admin.Firstname = rd["firstName"].ToString();
+                        admin.Lastname = rd["lastName"].ToString();
+                        admin.Middlename = rd["middleName"].ToString();
+                        admin.Status = Convert.ToBoolean(rd["userStatus"]);
+                        admin.RoleID = Convert.ToInt32(rd["userTypeID"]);
                         admins.Add(admin);
                     }
-
                     myConn.Close();
                 }
-
                 return admins;
             }
         }
@@ -73,17 +82,21 @@ namespace DAL
         }
         // sets parameters for insert/update
 
-        private Dictionary<string, object> SetParams(Admin department)
+        private Dictionary<string, object> SetParams(Admin admin)
         {
             Dictionary<string, object> result = new Dictionary<string, object>();
 
-            result.Add("@userName", department.Username);
-            result.Add("@userPassword", department.Password);
-            //result.Add("@userStatus", department.Status);
-            //result.Add("@userTypeID", department.RoleID);
+            result.Add("@userName", admin.Username);
+            result.Add("@userPassword", admin.Password);
+            result.Add("@userStatus", admin.Status);
+            result.Add("@userTypeID", admin.RoleID);
+            result.Add("@firstName", admin.Firstname);
+            result.Add("@lastName", admin.Lastname);
+            result.Add("@middleName", admin.Middlename);
+
             return result;
         }
-        #endregion    
+        #endregion
 
     }
 }

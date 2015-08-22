@@ -43,6 +43,10 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.9.6.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Desktop\tsg\Babawokie\hey\Babawokie\Babawokie\App_Data\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -503,12 +507,33 @@
   <ItemGroup>
     <Compile Include="App_Start\BootstrapBundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="DatabaseContext\AccountabilitiesContext.cs" />
+    <Compile Include="DatabaseContext\AdminContext.cs" />
+    <Compile Include="DatabaseContext\AuthenticationContext.cs" />
+    <Compile Include="DatabaseContext\Connection.cs" />
+    <Compile Include="DatabaseContext\DataAccessHelper.cs" />
+    <Compile Include="DatabaseContext\DepartmentContext.cs" />
+    <Compile Include="DatabaseContext\EmployeeContext.cs" />
+    <Compile Include="DatabaseContext\QueryBuilder.cs" />
+    <Compile Include="DatabaseContext\RolesContext.cs" />
+    <Compile Include="DatabaseContext\StudentContext.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Accountabilities.cs" />
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\AuditTrail.cs" />
+    <Compile Include="Models\Authentication.cs" />
+    <Compile Include="Models\Confirmation.cs" />
+    <Compile Include="Models\Department.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\UserCredentials.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Provider\myProvider.cs" />
   </ItemGroup>
@@ -738,8 +763,11 @@
     <Content Include="metro-bootstrap\metro-bootstrap.css.map" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
+    <Content Include="Views\Department\Index.cshtml" />
+    <Content Include="Views\Department\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -750,18 +778,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="images\" />
-    <Folder Include="Models\" />
     <Folder Include="styles\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\DAL\DAL.csproj">
-      <Project>{4574cb82-6689-43da-9763-9936808698e0}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Model\Model.csproj">
-      <Project>{651f8041-c973-4806-8f79-1a16dc86ec7e}</Project>
-      <Name>Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

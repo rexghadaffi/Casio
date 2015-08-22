@@ -1,32 +1,46 @@
 ﻿@model OnlineClearance.Models.Admin
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Admin</legend>
-        <div class="form-horizontal">
-            <div class="form-group">
-                @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2" })
-                <div class="col-md-4">
-                    @Html.TextBoxFor(model => model.Username, new { @class= "form-control" })
-                    @Html.ValidationMessageFor(model => model.Username)
-                </div>
-            </div>
-        </div>     
+
+        @Html.HiddenFor(model => model.ID)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Username)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Username)
+            @Html.ValidationMessageFor(model => model.Username)
+        </div>
+
         <div class="editor-label">
             @Html.LabelFor(model => model.Password)
         </div>
         <div class="editor-field">
-            @Html.PasswordFor(model => model.Password)
+            @Html.TextBoxFor(model => model.Password)
             @Html.ValidationMessageFor(model => model.Password)
         </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Status)
+        </div>
+        <div class="editor-field">
+           @Html.DropDownListFor(model => model.Status, new List<SelectListItem> { 
+          new SelectListItem { Text = "Active", Value = "true" },
+          new SelectListItem { Text = "Inactive", Value = "false" }
+          } ,"Select Status", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Status)
+        </div>
+
         <div class="editor-label">
             @Html.LabelFor(model => model.RoleID)
         </div>
@@ -60,7 +74,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }
@@ -71,3 +85,4 @@
 
 <script src="~/scripts/jquery.validate.js"></script>
 <script src="~/scripts/jquery.validate.unobtrusive.js"></script>
+

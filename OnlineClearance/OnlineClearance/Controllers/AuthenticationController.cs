@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DAL;
-using Model;
 using System.Web.Security;
+using OnlineClearance.Models;
+using OnlineClearance.DAL;
 
 namespace OnlineClearance.Controllers
 {

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Model.Admin>
+﻿@model IEnumerable<OnlineClearance.Models.Admin>
 
 @{
     ViewBag.Title = "Index";
@@ -6,7 +6,7 @@
 
 <h2>List of Admin Accounts</h2>
 <a href="Admin/Create">Add</a>
-<table class="table">
+<table class="table-record">
     <thead>
         <th>
             @Html.DisplayNameFor(model => model.Username)
@@ -31,35 +31,38 @@
         </th>
         <th></th>
     </thead>
+    <tbody>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Username)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RoleID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Firstname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Lastname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Middlename)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
-            </td>
-        </tr>
-    }
 
+        @foreach (var item in Model)
+        {
+            <tr style="height: 10px; line-height: 10px;">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoleID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firstname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lastname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Middlename)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                </td>
+            </tr>
+         
+        }
+    </tbody>
 </table>

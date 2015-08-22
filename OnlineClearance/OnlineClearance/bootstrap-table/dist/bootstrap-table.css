@@ -11,19 +11,19 @@
     border-radius: 1px;
 }
 
-.bootstrap-table .table,
-.bootstrap-table .table > tbody > tr > th,
-.bootstrap-table .table > tfoot > tr > th,
-.bootstrap-table .table > thead > tr > td,
-.bootstrap-table .table > tbody > tr > td,
-.bootstrap-table .table > tfoot > tr > td {
-    padding: 8px !important;
-}
+    .bootstrap-table .table,
+    .bootstrap-table .table > tbody > tr > th,
+    .bootstrap-table .table > tfoot > tr > th,
+    .bootstrap-table .table > thead > tr > td,
+    .bootstrap-table .table > tbody > tr > td,
+    .bootstrap-table .table > tfoot > tr > td {
+        padding: 8px !important;
+    }
 
-.bootstrap-table .table.table-no-bordered > thead > tr > th,
-.bootstrap-table .table.table-no-bordered > tbody > tr > td {
-    border-right: 2px solid transparent;
-}
+        .bootstrap-table .table.table-no-bordered > thead > tr > th,
+        .bootstrap-table .table.table-no-bordered > tbody > tr > td {
+            border-right: 2px solid transparent;
+        }
 
 .fixed-table-container {
     position: relative;
@@ -34,9 +34,9 @@
     -moz-border-radius: 4px;
 }
 
-.fixed-table-container.table-no-bordered {
-    border: 1px solid transparent;
-}
+    .fixed-table-container.table-no-bordered {
+        border: 1px solid transparent;
+    }
 
 .fixed-table-footer,
 .fixed-table-header {
@@ -58,7 +58,7 @@
 .fixed-table-body {
     overflow-x: auto;
     overflow-y: auto;
-    height: 100%;
+    height: 50%;
 }
 
 .fixed-table-container table {
@@ -72,29 +72,30 @@
     border-left: 1px solid #dddddd;
 }
 
-.fixed-table-container thead th:first-child {
-    border-left: none;
-    border-top-left-radius: 4px;
-    -webkit-border-top-left-radius: 4px;
-    -moz-border-radius-topleft: 4px;
-}
+    .fixed-table-container thead th:first-child {
+        border-left: none;
+        border-top-left-radius: 4px;
+        -webkit-border-top-left-radius: 4px;
+        -moz-border-radius-topleft: 4px;
+    }
 
-.fixed-table-container thead th .th-inner {
-    padding: 8px;
-    line-height: 24px;
-    vertical-align: top;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
+    .fixed-table-container thead th .th-inner {
+        padding: 8px;
+        line-height: 15px;
+        vertical-align: top;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
-.fixed-table-container thead th .sortable {
-    cursor: pointer;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAQAAADYWf5HAAAAkElEQVQoz7X QMQ5AQBCF4dWQSJxC5wwax1Cq1e7BAdxD5SL+Tq/QCM1oNiJidwox0355mXnG/DrEtIQ6azioNZQxI0ykPhTQIwhCR+BmBYtlK7kLJYwWCcJA9M4qdrZrd8pPjZWPtOqdRQy320YSV17OatFC4euts6z39GYMKRPCTKY9UnPQ6P+GtMRfGtPnBCiqhAeJPmkqAAAAAElFTkSuQmCC');
-    background-position: right;
-    background-repeat: no-repeat;
-    padding-right: 30px;
-}
+
+    .fixed-table-container thead th .sortable {
+        cursor: pointer;
+        background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAQAAADYWf5HAAAAkElEQVQoz7X QMQ5AQBCF4dWQSJxC5wwax1Cq1e7BAdxD5SL+Tq/QCM1oNiJidwox0355mXnG/DrEtIQ6azioNZQxI0ykPhTQIwhCR+BmBYtlK7kLJYwWCcJA9M4qdrZrd8pPjZWPtOqdRQy320YSV17OatFC4euts6z39GYMKRPCTKY9UnPQ6P+GtMRfGtPnBCiqhAeJPmkqAAAAAElFTkSuQmCC');
+        background-position: right;
+        background-repeat: no-repeat;
+        padding-right: 30px;
+    }
 
 .fixed-table-container th.detail {
     width: 30px;
@@ -102,7 +103,10 @@
 
 .fixed-table-container tbody td {
     border-left: 1px solid #dddddd;
+    height: 10px;
+    line-height: 10px;
 }
+
 
 .fixed-table-container tbody tr:first-child td {
     border-top: none;
@@ -111,6 +115,7 @@
 .fixed-table-container tbody td:first-child {
     border-left: none;
 }
+
 
 /* the same color with .active */
 .fixed-table-container tbody .selected td {
@@ -121,9 +126,9 @@
     text-align: center;
 }
 
-.fixed-table-container .bs-checkbox .th-inner {
-    padding: 8px 0;
-}
+    .fixed-table-container .bs-checkbox .th-inner {
+        padding: 8px 0;
+    }
 
 .fixed-table-container input[type="radio"],
 .fixed-table-container input[type="checkbox"] {
@@ -140,9 +145,9 @@
     margin-bottom: 10px;
 }
 
-.fixed-table-pagination div.pagination .pagination {
-    margin: 0;
-}
+    .fixed-table-pagination div.pagination .pagination {
+        margin: 0;
+    }
 
 .fixed-table-pagination .pagination a {
     padding: 6px 12px;
@@ -238,19 +243,19 @@
     margin-left: -1px !important;
 }
 
-.fixed-table-toolbar .btn-group > .btn-group > .btn {
-    border-radius: 0;
-}
+    .fixed-table-toolbar .btn-group > .btn-group > .btn {
+        border-radius: 0;
+    }
 
-.fixed-table-toolbar .btn-group > .btn-group:first-child > .btn {
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-}
+    .fixed-table-toolbar .btn-group > .btn-group:first-child > .btn {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+    }
 
-.fixed-table-toolbar .btn-group > .btn-group:last-child > .btn {
-    border-top-right-radius: 4px;
-    border-bottom-right-radius: 4px;
-}
+    .fixed-table-toolbar .btn-group > .btn-group:last-child > .btn {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
 
 .bootstrap-table .table > thead > tr > th {
     vertical-align: bottom;
