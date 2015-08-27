@@ -1,0 +1,8 @@
+C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\DataAccessLayer\bin\Debug\Model.dll
+C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\DataAccessLayer\bin\Debug\Model.pdb
+C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
