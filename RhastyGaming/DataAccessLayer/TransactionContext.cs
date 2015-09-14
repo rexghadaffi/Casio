@@ -1,31 +1,31 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Model;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model;
 
 namespace DataAccessLayer
 {
-    public class AuditContext : DataAccessHelper
+    public class TransactionContext : DataAccessHelper
     {
         public int _userid;
-        private AdminContext dbAdmin = new AdminContext();
+        private EmployeeContext dbEmployee = new EmployeeContext();
         
-        public AuditContext(int userID)
+        public TransactionContext(int userID)
         {
             _userid = userID;
         }
-        public AuditContext() { }
+        public TransactionContext() { }
         public IEnumerable<Audit> GetAllAudit
         {
             get
             {
                 List<Audit> audits = new List<Audit>();
 
-                string tables = "tblaudit as a, tblcompanyuser as c";
-                string subquery = "a.userID=c.userID ORDER BY a.auditID DESC";
+                string tables = "tblaudit as a, tblemployee as e";
+                string subquery = "a.userID=e.employeeID ORDER BY a.auditID DESC";
                 using (MySqlConnection strConn = MySqlConn)
                 {
                     strConn.Open();
@@ -36,7 +36,7 @@ namespace DataAccessLayer
                     while (rd.Read())
                     {
                         Audit audit = new Audit();
-                        Admin admin = dbAdmin.GetAllAdmin.FirstOrDefault(a => a.ID == Convert.ToInt32(rd["userID"]));
+                        Employee admin = dbEmployee.GetAllEmployee.FirstOrDefault(a => a.ID == Convert.ToInt32(rd["userID"]));
                         audit.FullName = string.Format("{0}, {1} {2}",
                                                         admin.Lastname,
                                                         admin.Firstname,
@@ -53,57 +53,19 @@ namespace DataAccessLayer
             }
         }
 
-        public void Add(string remarks)
+        public void AddAccountability(string studentNumber)
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
 
             data.Add("@userid", _userid);
-            data.Add("@action", "Created A New Record");
+            data.Add("@action", "Transaction");
             data.Add("@entrydate", DateTime.Now);
-            data.Add("@remarks", remarks);
+            data.Add("@remarks", "User has added accountability for student #: " + studentNumber);
 
             SpWithParam("add_audit_trail", data);
         }
 
-        public void Edit(string remarks)
-        {
-            Dictionary<string, object> data = new Dictionary<string, object>();
-
-            data.Add("@userid", _userid);
-            data.Add("@action", "Modified A Record");
-            data.Add("@entrydate", DateTime.Now);
-            data.Add("@remarks", remarks);
-
-            SpWithParam("add_audit_trail", data);
-        }
-
-        public void LoggedIn()
-        {
-            Dictionary<string, object> data = new Dictionary<string, object>();
-
-            data.Add("@userid", _userid);
-            data.Add("@action", "Logged In");
-            data.Add("@entrydate", DateTime.Now);
-            data.Add("@remarks", "User has Logged in the STI Clearance System.");
-
-            SpWithParam("add_audit_trail", data);
-        }
-
-        public void LoggedOut()
-        {
-            Dictionary<string, object> data = new Dictionary<string, object>();
-
-            data.Add("@userid", _userid);
-            data.Add("@action", "Logged In");
-            data.Add("@entrydate", DateTime.Now);
-            data.Add("@remarks", "User has Logged Out of the STI Clearance System.");
-
-            SpWithParam("add_audit_trail", data);
-        }
-
-    
-
-        public void PrintedClearance()
+        public void MassAccountability()
         {
             Dictionary<string, object> data = new Dictionary<string, object>();
 

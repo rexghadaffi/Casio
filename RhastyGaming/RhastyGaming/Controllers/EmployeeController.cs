@@ -67,7 +67,7 @@ namespace RhastyGaming.Controllers
                 {
                     dbEmployee.Update(data, id);
                     base.SetUserIDForAudit();
-                    base.dbAudit.Add("User has updated a department head record");
+                    base.dbAudit.Edit("User has updated a department head record");
                     return RedirectToAction("Index");
                 }               
                 return View(data);

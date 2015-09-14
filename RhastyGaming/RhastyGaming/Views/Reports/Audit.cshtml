@@ -6,8 +6,8 @@
 
 <h2>Audit Trail</h2>
 
-<table class="table">
-    <tr>   
+<table class="table-reports">
+    <thead>   
         <th>
             @Html.DisplayNameFor(model => model.FullName)
         </th>    
@@ -20,7 +20,7 @@
         <th>
             @Html.DisplayNameFor(model => model.ActionDate)
         </th>      
-    </tr>
+    </thead>
 
 @foreach (var item in Model) {
     <tr>

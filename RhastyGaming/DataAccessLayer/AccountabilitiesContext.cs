@@ -188,7 +188,7 @@ namespace DataAccessLayer
             return zeros + data;
         }
 
-        //--Commented for Reusability purposes
+        //--Commented for re use purposes
         //private List<string> GetPreceedingColumns(IExcelDataReader excelData)
         //{
         //    System.Data.DataTable excelDataTable = excelData.AsDataSet().Tables[0];

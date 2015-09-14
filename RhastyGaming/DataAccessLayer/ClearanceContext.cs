@@ -7,11 +7,23 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class ClearanceContext
+    public class ClearanceContext : DataAccessHelper
     {
         private AccountabilitiesContext dbAccountability = new AccountabilitiesContext();
         private DepartmentContext dbDeparment = new DepartmentContext();
         private StudentContext dbStudent = new StudentContext();
+
+        public List<string> TargetFields 
+        {
+            get 
+            {
+                return new List<string> 
+                { 
+                "codeNumber", "status", "studentNumber"                
+                };
+            }
+        }
+        
 
         public ClearanceViewModel Fetch(string studentNumber)
         {
@@ -57,5 +69,35 @@ namespace DataAccessLayer
 
             return vm;
         }
+
+        public string RetrieveConfirmationCode(string studentNumber)
+        {
+            Dictionary<string, object> result = new Dictionary<string, object>();
+
+            result.Add("@studentNo", studentNumber);
+            string code = StoredProc("get_code", result);
+            if (code != "")
+            {
+                return code;
+            }
+            else 
+            {
+                ExecuteNonQuery(QueryBuilder.Insert("tblconfirmation", TargetFields), SetParams(studentNumber));
+                return StoredProc("get_code", result);
+            }
+        }
+      
+
+        private Dictionary<string, object> SetParams(string studentNumber)
+        {
+            Dictionary<string, object> result = new Dictionary<string, object>();
+
+            result.Add("@codeNumber", Guid.NewGuid());
+            result.Add("@status", true);
+            result.Add("@studentNumber", studentNumber);
+            return result;
+        }
+
+
     }
 }

@@ -61,6 +61,34 @@ namespace DataAccessLayer
             }
         }
 
+        protected virtual string StoredProc(string paramName, Dictionary<string, object> data)
+        {
+            string result = "";
+            using (MySqlConnection strConn = MySqlConn)
+            {
+                MySqlCommand cmd = new MySqlCommand(paramName, strConn);
+              
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                foreach (KeyValuePair<string, object> value in data)
+                {
+                    cmd.Parameters.AddWithValue(value.Key, value.Value);
+                }
+
+                strConn.Open();
+                MySqlDataReader rd = cmd.ExecuteReader();
+
+                while (rd.Read())
+                {
+                    result = rd["codeNumber"].ToString();
+                }
+
+                strConn.Close();
+            }
+
+            return result;
+        }
+
         protected virtual int GetUserID(string username, string fieldname)
         {
             int result = 0;

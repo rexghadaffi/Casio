@@ -24,11 +24,26 @@
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/bootstrap-notify.min.js"></script>
     <script src="~/morris.js-0.5.1/morris.js"></script>
+    <script src="~/Scripts/bootstrap-table-export.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             @Html.Raw(@ViewBag.Saved)
             @Html.Raw(@ViewBag.ErrorMessage)
             $('.field-validation-valid').addClass('text-danger');
+
+            $(".table-reports").bootstrapTable({              
+                pagination: true,
+                striped: true,
+                pagination: true,
+                pageSize: 10,
+                pageList: [10, 25, 50, 100, 200],
+                search: true,
+                showColumns: true,
+                showToggle: true,              
+                clickToSelect: true,
+                showFilter: true,
+                toolbar: '#filter-bar'
+            });
             //$.notify('<strong>Unable to Edit!</strong> You cannot edit past records.', { type: 'danger' });
         });
     </script>

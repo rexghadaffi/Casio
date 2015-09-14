@@ -20,5 +20,21 @@ namespace RhastyGaming.Controllers
             ViewBag.Lastname = vm.Student.Firstname + " " + vm.Student.Lastname;
             return View(vm);
         }
+
+        public string IsCleared()
+        {
+            AccountabilitiesContext dbAccountability = new AccountabilitiesContext();
+            int count = dbAccountability.Fetch.Where(a => a.StudentNumber == User.Identity.Name && a.Status == true).Count();
+            string hey = "";
+            if (count <= 0)
+            {
+                hey = dbContext.RetrieveConfirmationCode(User.Identity.Name);
+                return hey;
+            }
+
+            Guid uncleared = Guid.Empty;
+
+            return uncleared.ToString();
+        }
 	}
 }

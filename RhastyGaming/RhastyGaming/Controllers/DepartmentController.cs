@@ -9,7 +9,7 @@ using System.Web.Mvc;
 namespace RhastyGaming.Controllers
 {
     [Authorize(Roles = "tblcompanyuser")]
-    public class DepartmentController : Controller
+    public class DepartmentController : BaseController
     {
         private DepartmentContext dbDepartment = new DepartmentContext();
         //
@@ -30,6 +30,8 @@ namespace RhastyGaming.Controllers
             if (ModelState.IsValid)
             {
                 dbDepartment.Insert(data);
+                base.SetUserIDForAudit();
+                base.dbAudit.Add("User has created a new department record");
                 return RedirectToAction("Index");
             }
             return View();
@@ -47,6 +49,8 @@ namespace RhastyGaming.Controllers
             if (ModelState.IsValid)
             {
                 dbDepartment.Update(data, id);
+                base.SetUserIDForAudit();
+                base.dbAudit.Edit("User has updated a department record");
                 return RedirectToAction("Index");
             }
             return View();

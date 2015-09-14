@@ -16,5 +16,9 @@ namespace RhastyGaming.Controllers
         {
             return View(dbAudit.GetAllAudit.ToList());
         }
+        public ActionResult Transaction()
+        {
+           return View(dbAudit.GetAllAudit.ToList());
+        }
 	}
 }

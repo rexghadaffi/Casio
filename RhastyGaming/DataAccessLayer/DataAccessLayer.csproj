@@ -64,6 +64,7 @@
     <Compile Include="QueryBuilder.cs" />
     <Compile Include="RolesContext.cs" />
     <Compile Include="StudentContext.cs" />
+    <Compile Include="TransactionContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

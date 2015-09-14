@@ -12,11 +12,11 @@ namespace RhastyGaming.Controllers
         //
         // GET: /Base/
         protected AuditContext dbAudit = new AuditContext();
-        protected AdminContext dbAdmin = new AdminContext();
-
+        protected AdminContext dbAdmin = new AdminContext();       
+        protected TransactionContext dbTransaction = new TransactionContext();
         protected void SetUserIDForAudit()
         {
             dbAudit._userid = dbAdmin.GetIdForUser(User.Identity.Name);
-        }
+        }    
 	}
 }

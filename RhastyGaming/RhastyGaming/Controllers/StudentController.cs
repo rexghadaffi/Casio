@@ -12,7 +12,7 @@ using Newtonsoft.Json;
 namespace RhastyGaming.Controllers
 {
     
-    public class StudentController : Controller
+    public class StudentController : BaseController
     {
         private StudentContext dbStudent = new StudentContext();
         //
@@ -36,6 +36,8 @@ namespace RhastyGaming.Controllers
             if (ModelState.IsValid)
             {
                 dbStudent.Update(student, id);
+                base.SetUserIDForAudit();
+                base.dbAudit.Edit("User has updated a student record");
                 return RedirectToAction("Index");
             }
             return View();
@@ -53,6 +55,8 @@ namespace RhastyGaming.Controllers
                 var path = Path.Combine(Server.MapPath("~/uploads/student"), fileName);
                 file.SaveAs(path);
                 dbStudent.MassUpload(fileName);
+                base.SetUserIDForAudit();
+                base.dbAudit.Edit("User has uploaded student records");
             }
             return RedirectToAction("Index");
         }
