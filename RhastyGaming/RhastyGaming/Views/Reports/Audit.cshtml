@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Model.Audit>
+
+@{
+    ViewBag.Title = "Audit";
+}
+
+<h2>Audit Trail</h2>
+
+<table class="table">
+    <tr>   
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>    
+        <th>
+            @Html.DisplayNameFor(model => model.Action)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Remarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ActionDate)
+        </th>      
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.Action)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Remarks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActionDate)
+        </td>      
+    </tr>
+}
+
+</table>

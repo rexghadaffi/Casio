@@ -9,9 +9,8 @@ using System.Web.Security;
 
 namespace RhastyGaming.Controllers
 {
-    public class AuthenticationController : Controller
+    public class AuthenticationController : BaseController
     {
-
         //GET: /Authentication/
         public ActionResult Index()
         {
@@ -27,7 +26,10 @@ namespace RhastyGaming.Controllers
                 if (db.Message == "")
                 {
                     FormsAuthentication.SetAuthCookie(login.Username, false);
-                    return RedirectToAction("Index", "Home");
+                    Session["role"] = login.Type;
+                    base.dbAudit._userid = dbAdmin.GetIdForUser(login.Username);
+                    base.dbAudit.LoggedIn();
+                    return RedirectToAction("Index", db.LandingPage);
                 }
                 ViewBag.ErrorMessage = db.Message;
                 return View();
@@ -41,6 +43,8 @@ namespace RhastyGaming.Controllers
 
         public ActionResult Logout()
         {
+            base.dbAudit._userid = dbAdmin.GetIdForUser(User.Identity.Name);
+            base.dbAudit.LoggedOut();
             FormsAuthentication.SignOut();
             return RedirectToAction("Index");
         }

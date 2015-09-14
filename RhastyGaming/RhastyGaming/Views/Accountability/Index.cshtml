@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Accountability";
+}
+
+<legend>
+    Accountability
+</legend>
+
+
+@* Modal Goes Here..*@
+@{ Html.RenderPartial("~/Views/Shared/_UploadAccountabilities.cshtml"); }
+@* ------ Add Modal  ------ *@
+<div id="addModalContainer"></div>
+
+
+@* Table Goes Here..*@
+@{ Html.RenderPartial("~/Views/Shared/_AccountabilityTable.cshtml"); }
+
+
+@section Scripts {
+@Scripts.Render("~/bundles/jqueryval")
+<script src="~/Scripts/table-events.js"></script>    
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tblaccountability').bootstrapTable({
+            url: '/Student/Data',
+            pagination: true,
+            classes: 'table table-hover table-condensed',
+            sidePagination: 'server',
+            queryParamsType: 'Else',
+            uniqueId: 'StudentNumber',
+            toolbarAlign: 'right',
+            toolbar: '#accountabilityToolbar',
+            pageList: [10, 20, 50, 100],
+            onDblClickRow: function (row, $element) {
+                var key = row["StudentNumber"];
+                ShowModal(key);
+            }
+        });      
+    });
+
+    function ShowModal(studentNumber) {
+        $.ajax({
+            // Get Student PartialView
+            url: "/Accountability/ShowModal",
+            type: 'Get',
+            data: { snum: studentNumber },
+            success: function (data) {
+                $('#addModalContainer').empty().append(data);
+
+                $('form').removeData("validator");
+                $.validator.unobtrusive.parse(document);
+
+                $('.field-validation-valid').addClass('text-danger');
+                $('#addModal').modal("show");
+            },
+            error: function () {
+                $.notify('<strong>System Error!</strong> Something happened and the server is not responding.', { type: 'danger' });
+            }
+        });
+    }
+</script>
+
+}

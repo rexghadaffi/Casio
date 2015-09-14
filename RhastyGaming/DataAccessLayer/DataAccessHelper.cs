@@ -122,7 +122,7 @@ namespace DataAccessLayer
 
         protected virtual object GetFieldID(string tablename, string field,string key, object value)
         {
-            string query = string.Format("SELECT {0} FROM {0} WHERE {0} = {0}",
+            string query = string.Format("SELECT {0} FROM {1} WHERE {2} = '{3}'",
                                          field, tablename, key, value);
             using (MySqlConnection strConn = MySqlConn)
             {

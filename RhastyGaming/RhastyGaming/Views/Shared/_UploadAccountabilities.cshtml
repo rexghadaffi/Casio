@@ -1,0 +1,36 @@
+﻿@using (Html.BeginForm("Upload", "Accountability", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="modal fade" id="uploadAccountabilities" role="dialog" data-backdrop="static">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">x</button>
+                    <center><h4 class="modal-title">Mass Accountability Upload</h4></center>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true)
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="file" name="file" required />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="pull-right">
+                                <button type="submit" class="btn btn-success" id="btnSendRequest">
+                                    <center>Upload</center>
+                                </button>
+                                <button type="button" data-dismiss="modal" class="btn btn-default" id="btnSendRequest">
+                                    <center>Cancel</center>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

@@ -35,8 +35,7 @@ namespace Utility
 
         public static string Error(string exception)
         {
-            return "$.notify('<strong>System Error!</strong> " +
-                      exception + "', { type: 'error' });";
+            return "$.notify('<strong>Unable to Edit!</strong> " + exception.Replace("'", "") + ".', { type: 'danger' });";
         }
 
         public static string InvalidWeek

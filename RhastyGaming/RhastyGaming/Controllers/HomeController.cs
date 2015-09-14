@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace RhastyGaming.Controllers
 {
+    [Authorize(Roles = "tblcompanyuser")]
     public class HomeController : Controller
     {
         //

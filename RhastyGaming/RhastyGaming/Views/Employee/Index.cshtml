@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Model.EmployeeList>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<legend>
+    Department Head Record List
+    <div class="pull-right">
+        @Html.ActionLink("Create New", "Create")
+    </div>
+</legend>
+<table class="table">
+    <tr>
+        <th>Fullname</th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>    
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeNumber)
+        </th>      
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RoleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>    
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lastname), 
+            @Html.DisplayFor(modelItem => item.Firstname)
+            @Html.DisplayFor(modelItem => item.Middlename)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td> 
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeNumber)
+        </td>   
+        <td>
+            @Html.DisplayFor(modelItem => item.DepartmentName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RoleName)
+        </td>    
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>       
+      
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID })            
+        </td>
+    </tr>
+}
+
+</table>

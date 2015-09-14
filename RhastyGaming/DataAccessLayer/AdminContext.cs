@@ -23,7 +23,13 @@ namespace DataAccessLayer
         {
             get
             {
-                return new List<string> { "userName", "userPassword", "userStatus", "userTypeID" };
+                return new List<string> { "userName",
+                    "userPassword",
+                    "userStatus",
+                    "userTypeID",
+                    "firstName",
+                    "lastName",
+                    "middleName"};
             }
         }
 
@@ -77,7 +83,6 @@ namespace DataAccessLayer
             ExecuteNonQuery(QueryBuilder.Update(_tableName, TargetFields, id, _pkField), SetParams(department));
         }
         // sets parameters for insert/update
-
         private Dictionary<string, object> SetParams(Admin department)
         {
             Dictionary<string, object> result = new Dictionary<string, object>();
@@ -86,7 +91,15 @@ namespace DataAccessLayer
             result.Add("@userPassword", department.Password);
             result.Add("@userStatus", department.Status);
             result.Add("@userTypeID", department.RoleID);
+            result.Add("@firstName", department.Firstname);
+            result.Add("@lastName", department.Lastname);
+            result.Add("@middleName", department.Middlename);
             return result;
+        }
+
+        public int GetIdForUser(string username)
+        {
+           return Convert.ToInt32(GetFieldID("tblcompanyuser", "userID", "userName", username));
         }
         #endregion    
 

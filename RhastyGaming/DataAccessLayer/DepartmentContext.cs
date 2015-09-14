@@ -76,9 +76,7 @@ namespace DataAccessLayer
 
             return result;
         }
-        #endregion
-
-     
+        #endregion    
 
 
     }

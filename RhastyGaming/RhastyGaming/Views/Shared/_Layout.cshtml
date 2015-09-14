@@ -6,29 +6,33 @@
     <title>@ViewBag.Title - Clearance</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/font-awesome/css")
-
+    <link href="~/font-awesome/css/font-awesome.css" rel="stylesheet" />
+    <link href="~/morris.js-0.5.1/morris.css" rel="stylesheet" />
 </head>
 <body>
-    @{ Html.RenderPartial("~/Views/Shared/_Navbar.cshtml"); }   
+    @{ Html.RenderPartial("~/Views/Shared/_Navbar.cshtml"); }
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - STI Cubao Clearance</p>
         </footer>
-    </div>    
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bootstrap-table/js")
     @RenderSection("scripts", required: false)
     <script src="~/Scripts/bootstrap-notify.min.js"></script>
+    <script src="~/morris.js-0.5.1/morris.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-               @Html.Raw(@ViewBag.Saved)
-               @Html.Raw(@ViewBag.ErrorMessage)
+            @Html.Raw(@ViewBag.Saved)
+            @Html.Raw(@ViewBag.ErrorMessage)
+            $('.field-validation-valid').addClass('text-danger');
+            //$.notify('<strong>Unable to Edit!</strong> You cannot edit past records.', { type: 'danger' });
         });
-      
     </script>
+
+
 </body>
 </html>

@@ -26,8 +26,10 @@ namespace DataAccessLayer
             get
             {
                 return new List<string> { 
-                "employeeNumber", "firstName", "lastName", "middleName",
-                "departmentID", "userTypeID"
+                "employeeNumber", "firstName", "lastName",
+                "middleName", "departmentID",
+                "userTypeID", "userName",
+                "userPassword", "userStatus"
                 };
             }
         }
@@ -56,8 +58,14 @@ namespace DataAccessLayer
                         employee.Firstname = rd["firstName"].ToString();
                         employee.Lastname = rd["lastName"].ToString();
                         employee.Middlename = rd["middleName"].ToString();
+                        employee.DepartmentID = Convert.ToInt32(rd["departmentID"]);
                         employee.DepartmentName = rd["departmentName"].ToString();
-                        employee.RoleName = rd["userTypename"].ToString();
+                        employee.RoleID =  Convert.ToInt32(rd["userTypeID"]);
+                        employee.RoleName = rd["userTypeName"].ToString();
+                        employee.Username = rd["userName"].ToString();
+                        employee.Password = rd["userPassword"].ToString();
+                        employee.Status = Convert.ToBoolean(rd["userStatus"]);
+                       
                         employees.Add(employee);
                     }
                     myConn.Close();
@@ -89,8 +97,16 @@ namespace DataAccessLayer
             result.Add("@middleName", employee.Middlename);
             result.Add("@departmentID", employee.DepartmentID);
             result.Add("@userTypeID", employee.RoleID);
+            result.Add("@userName", employee.Username);
+            result.Add("@userPassword", employee.Password);
+            result.Add("@userStatus", employee.Status);
 
             return result;
+        }
+
+        public int GetDepartmentID(string username) 
+        {
+            return Convert.ToInt32(GetFieldID("tblemployee", "departmentID", "userName", username));
         }
         #endregion 
 

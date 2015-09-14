@@ -1,3 +1,4 @@
+C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Newtonsoft.Json.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\RhastyGaming.dll.config
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\RhastyGaming.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\RhastyGaming.pdb
@@ -5,6 +6,7 @@ C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Antlr
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\DataAccessLayer.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\EntityFramework.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\EntityFramework.SqlServer.dll
+C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\ICSharpCode.SharpZipLib.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Microsoft.AspNet.Identity.Owin.dll
@@ -19,7 +21,6 @@ C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Micro
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Microsoft.Owin.Security.Twitter.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Model.dll
-C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Newtonsoft.Json.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Owin.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\System.Web.Helpers.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\System.Web.Mvc.dll
@@ -30,6 +31,7 @@ C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Syste
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\System.Web.WebPages.Razor.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\WebActivatorEx.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\WebGrease.dll
+C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Excel.4.5.dll
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\DataAccessLayer.pdb
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\Model.pdb
 C:\Users\i-jcadiao\Documents\Babawokie\Casio\RhastyGaming\RhastyGaming\bin\System.Web.Helpers.xml

@@ -9,16 +9,16 @@ using Utility;
 
 namespace RhastyGaming.Controllers
 {
-    public class AdminController : Controller
-    {
+    [Authorize(Roles = "tblcompanyuser")]
+    public class AdminController : BaseController
+    {           
         //
-        // GET: /Admin/
-        private AdminContext dbAdmin = new AdminContext();
+        // GET: /Admin/     
         private RolesContext dbRoles = new RolesContext();
     
         public ActionResult Index()
         {
-            List<Admin> admins = dbAdmin.GetAllAdmin.ToList();
+            List<Admin> admins = base.dbAdmin.GetAllAdmin.ToList();
             return View(admins);
         }
         public ActionResult Create()
@@ -35,35 +35,48 @@ namespace RhastyGaming.Controllers
                 UpdateModel(admin);
                 if (ModelState.IsValid)
                 {
-                    dbAdmin.Insert(admin);
+                    admin.Status = true;
+                    base.dbAdmin.Insert(admin);
+                    base.SetUserIDForAudit();
+                    base.dbAudit.Add("User has created a new admin account");
                     return RedirectToAction("Index");
                 }              
                 return View();
             }
             catch (Exception ex)
-            {
+            {                
                 ViewBag.ErrorMessage = MessageBox.Error(ex.Message);
                 return View();
-            }
-           
+            }           
         }
         public ActionResult Edit(int id)
         {
-            Admin admin = dbAdmin.GetAllAdmin.FirstOrDefault(a => a.ID == id);
+            Admin admin = base.dbAdmin.GetAllAdmin.FirstOrDefault(a => a.ID == id);
             SetDropDown(admin);
             return View(admin);
         }
         [HttpPost]
         public ActionResult Edit(Admin admin, int id)
         {
-            TryUpdateModel(admin);
-            if (ModelState.IsValid)
-            {
-                dbAdmin.Update(admin, id);
-                return RedirectToAction("Index");
-            }
             SetDropDown(admin);
-            return View(admin);
+            try
+            {
+                UpdateModel(admin);
+                if (ModelState.IsValid)
+                {
+                    base.dbAdmin.Update(admin, id);
+                    base.SetUserIDForAudit();
+                    base.dbAudit.Edit("User has updated an admin account record");
+                    return RedirectToAction("Index");
+                }
+               
+                return View(admin);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = MessageBox.Error(ex.Message);
+                return View(admin);
+            }          
         }
         private void CreateDropDown()
         {

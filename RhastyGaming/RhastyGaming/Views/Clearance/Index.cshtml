@@ -1,0 +1,79 @@
+﻿@model Model.ClearanceViewModel
+
+@{
+    ViewBag.Title = ViewBag.Lastname;
+}
+<div id="clearanceContainer">
+    @Styles.Render("~/Content/css")
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading clearfix">
+            STI College Cubao Clearance Form
+        </div>
+        <!-- Panel Content Goes Here..-->
+        <div class="panel-body">
+            <table class="table table-bordered table-condensed">
+                <tr>
+                    <td class="col-md-1"><strong>Lastname:</strong></td>
+                    <td>@Html.DisplayFor(model => Model.Student.Lastname)</td>
+                    <td class="col-md-2"><strong>Student #:</strong></td>
+                    <td>@Html.DisplayFor(model => Model.Student.StudentNumber)</td>
+                    <td class="col-md-2"><strong>Year Level:</strong></td>
+                    <td class="col-md-1">@Html.DisplayFor(model => Model.Student.Year)</td>
+                </tr>
+                <tr>
+                    <td class="col-md-1"><strong>Firstname:</strong></td>
+                    <td>@Html.DisplayFor(model => Model.Student.Firstname)</td>
+                    <td class="col-md-2"><strong>Course:</strong></td>
+                    <td>@Html.DisplayFor(model => Model.Student.Program)</td>
+                    <td class="col-md-2"><strong>Term:</strong></td>
+                    <td class="col-md-1">@Html.DisplayFor(model => Model.Student.Term)</td>
+                </tr>
+                <tr>
+                    <td class="col-md-1"><strong>Middlename:</strong></td>
+                    <td>@Html.DisplayFor(model => Model.Student.Middlename)</td>
+                    <td class="col-md-1"><strong>School Year:</strong></td>
+                    <td>@Html.DisplayFor(model => Model.Student.SchoolYear)</td>
+                    <td class="col-md-1"><strong>Status:</strong></td>
+                    <td>@Html.DisplayFor(model => Model.Student.Status)</td>
+                </tr>
+            </table>
+            <table class="table table-bordered table-condensed">
+                <tr>
+                    <td class="text-center"><strong>Department</strong></td>
+                    <td class="text-center"><strong>Status</strong></td>
+                </tr>
+                @foreach (var item in Model.Clearance)
+                {
+                    <tr>
+                        <td class="col-md-5 text-center">@Html.DisplayFor(modelItem => item.Key)</td>
+                        <td class="text-center">@Html.DisplayFor(modelItem => item.Value)</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="pull-right">
+    <button type="submit" class="btn btn-default" id="btnPrint">
+        <span class="fa fa-print fa-fw"></span>
+        Print
+    </button>
+</div>
+<div id="editor"></div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $('#btnPrint').click(function () {
+            var divToPrint = document.getElementById('clearanceContainer');
+            var popupWin = window.open('', '_blank', 'width=300,height=400,location=no,left=200px');
+            popupWin.document.open();
+            popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</html>');
+            popupWin.document.close();
+        });
+    </script>
+
+
+}

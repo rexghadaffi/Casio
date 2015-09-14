@@ -26,20 +26,28 @@ namespace DataAccessLayer
             get;
             private set;
         }
+        public string LandingPage { get;  private set; }
         public AuthenticationContext(Authentication data)
-        {
-            this._passwordField = "userName";
-            this._usernameField = "userPassword";
+        {            
             this._tablename = data.Type;
             this._username = data.Username;
             this._password = data.Password;
 
+            if (data.Type == "tblstudent")
+            {
+                this._passwordField = "lastName";
+                this._usernameField = "studentNumber";
+            }
+            else {
+                this._passwordField = "userName";
+                this._usernameField = "userPassword";
+            }
+
             IsValidUser();
             IsActiveUser();
-            IsValidCredentials();   
+            IsValidCredentials();
+            SetLandingPage(data);
         }
-
-      
 
         private void IsValidUser()
         {
@@ -115,6 +123,22 @@ namespace DataAccessLayer
             if (result <= 0 && Message == "")
             {
                 Message = "Incorrect Username / Password.";
+            }
+        }
+
+        public void SetLandingPage(Authentication data)
+        {
+            if (data.Type == "tblemployee")
+            {
+                LandingPage = "Accountability";
+            }
+            else if (data.Type == "tblstudent")
+            {
+                LandingPage = "Clearance";
+            }
+            else if (data.Type == "tblcompanyuser")
+            {
+                LandingPage = "Home";
             }
         }
     }
