@@ -82,10 +82,10 @@
                 }
             });
 
-            alert(code);
+          
 
             var divToPrint = document.getElementById('clearanceContainer');
-            var popupWin = window.open('', '_blank', 'width=760,height=1024,location=no,left=200px');
+            var popupWin = window.open('', '_blank', 'width=300,height=300,location=no,left=200px');
             popupWin.document.open();
             popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + ' <div class="pull-right"> Confirmation Code: ' + code + '</div></body></html>');
             popupWin.document.close();
