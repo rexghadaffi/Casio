@@ -61,13 +61,16 @@ namespace RhastyGaming.Controllers
             return RedirectToAction("Index");
         }
         [Authorize(Roles = "tblcompanyuser, tblemployee")]
-        public string Data(int pageSize, int pageNumber, string sortOrder)
+        public string Data(int pageSize, int pageNumber, string sortOrder, string searchText = null)
         {
             var skip = (pageNumber - 1) * pageSize;
             int skipResult = Convert.ToInt32(skip);
+
+            IEnumerable<Student> students = IsSearching(searchText);
+            
             //----------------
-            var listCount = dbStudent.GetAllStudent.Count();
-            var list = dbStudent.GetAllStudent.ToList().Skip(skipResult).Take(pageSize);
+            var listCount = students.Count();
+            var list = students.ToList().Skip(skipResult).Take(pageSize);
 
             dynamic foo = new ExpandoObject();
             foo.total = listCount;
@@ -78,24 +81,19 @@ namespace RhastyGaming.Controllers
 
             return json;
         }
-         [Authorize(Roles = "tblcompanyuser, tblemployee")]
-        public string Find(int pageSize, int pageNumber, string sortOrder, string snum = "0")
-        {           
-            var skip = (pageNumber - 1) * pageSize;
-            int skipResult = Convert.ToInt32(skip);
-            //----------------
-            var listCount = dbStudent.GetAllStudent.Count();
-            var list =
-            dbStudent.GetAllStudent.Where(s => s.StudentNumber.Contains(snum)).Skip(skipResult).Take(pageSize);
-           
-            dynamic foo = new ExpandoObject();
-            foo.total = listCount;
-            foo.rows = list;
 
-            string json = JsonConvert.SerializeObject(foo);
-
-
-            return json;
-        }
+        private IEnumerable<Student> IsSearching(string searchText)
+        {
+            IEnumerable<Student> students = dbStudent.GetAllStudent;
+            if (searchText != null)
+            {
+                return students.Where(s => s.Firstname.Contains(searchText) ||
+                               s.Lastname.Contains(searchText) ||
+                               s.Middlename.Contains(searchText) ||
+                               s.Program.Contains(searchText) ||
+                               s.StudentNumber.Contains(searchText));
+            }
+            return students;
+        }        
     }
 }

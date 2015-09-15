@@ -30,7 +30,6 @@
             @Html.Raw(@ViewBag.Saved)
             @Html.Raw(@ViewBag.ErrorMessage)
             $('.field-validation-valid').addClass('text-danger');
-
             $(".table-reports").bootstrapTable({              
                 pagination: true,
                 striped: true,
@@ -43,8 +42,7 @@
                 clickToSelect: true,
                 showFilter: true,
                 toolbar: '#filter-bar'
-            });
-            //$.notify('<strong>Unable to Edit!</strong> You cannot edit past records.', { type: 'danger' });
+            });          
         });
     </script>
 

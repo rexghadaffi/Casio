@@ -25,16 +25,13 @@ namespace RhastyGaming.Controllers
         {
             AccountabilitiesContext dbAccountability = new AccountabilitiesContext();
             int count = dbAccountability.Fetch.Where(a => a.StudentNumber == User.Identity.Name && a.Status == true).Count();
-            string hey = "";
+            
             if (count <= 0)
             {
-                hey = dbContext.RetrieveConfirmationCode(User.Identity.Name);
-                return hey;
-            }
+                return dbContext.RetrieveConfirmationCode(User.Identity.Name);                        
+            }           
 
-            Guid uncleared = Guid.Empty;
-
-            return uncleared.ToString();
+            return "You still have pending accountabilities";
         }
 	}
 }

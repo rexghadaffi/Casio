@@ -67,7 +67,7 @@
 @section Scripts {
     <script type="text/javascript">
         $('#btnPrint').click(function () {
-            var code = "";
+           
 
             $.ajax({
                 // Get Student PartialView
@@ -75,7 +75,12 @@
                 type: 'Get',
                 cache: false,     
                 success: function (data) {                   
-                    code += data;
+                    
+                    var divToPrint = document.getElementById('clearanceContainer');
+                    var popupWin = window.open('', '_blank', 'width=760,height=1024,location=no,left=200px');
+                    popupWin.document.open();
+                    popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + ' <div class="pull-right"> Confirmation Code: ' + data + '</div></body></html>');
+                    popupWin.document.close();
                 },
                 error: function () {
                     $.notify('<strong>System Error!</strong> Something happened and the server is not responding.', { type: 'danger' });
@@ -84,11 +89,7 @@
 
           
 
-            var divToPrint = document.getElementById('clearanceContainer');
-            var popupWin = window.open('', '_blank', 'width=300,height=300,location=no,left=200px');
-            popupWin.document.open();
-            popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + ' <div class="pull-right"> Confirmation Code: ' + code + '</div></body></html>');
-            popupWin.document.close();
+          
         });
     </script>
 
