@@ -85,7 +85,7 @@ namespace DataAccessLayer
                 ExecuteNonQuery(QueryBuilder.Insert("tblconfirmation", TargetFields), SetParams(studentNumber));
                 return StoredProc("get_code", result);
             }
-        }
+        }       
       
 
         private Dictionary<string, object> SetParams(string studentNumber)
@@ -96,7 +96,7 @@ namespace DataAccessLayer
             result.Add("@status", true);
             result.Add("@studentNumber", studentNumber);
             return result;
-        }
+        }    
 
 
     }

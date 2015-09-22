@@ -11,13 +11,14 @@
 </head>
 <body>
     @{ Html.RenderPartial("~/Views/Shared/_Navbar.cshtml"); }
-    <div class="container body-content">
+    <div class="container-fluid body-content">
         @RenderBody()
-        <hr />
         <footer>
+            <hr />
             <p>&copy; @DateTime.Now.Year - STI Cubao Clearance</p>
         </footer>
     </div>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bootstrap-table/js")
@@ -30,7 +31,7 @@
             @Html.Raw(@ViewBag.Saved)
             @Html.Raw(@ViewBag.ErrorMessage)
             $('.field-validation-valid').addClass('text-danger');
-            $(".table-reports").bootstrapTable({              
+            $(".table-reports").bootstrapTable({
                 pagination: true,
                 striped: true,
                 pagination: true,
@@ -38,11 +39,11 @@
                 pageList: [10, 25, 50, 100, 200],
                 search: true,
                 showColumns: true,
-                showToggle: true,              
+                showToggle: true,
                 clickToSelect: true,
                 showFilter: true,
                 toolbar: '#filter-bar'
-            });          
+            });
         });
     </script>
 

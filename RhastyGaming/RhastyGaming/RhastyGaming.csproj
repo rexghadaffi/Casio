@@ -171,6 +171,7 @@
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ClearanceController.cs" />
+    <Compile Include="Controllers\ConfirmationController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -187,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\morris.css" />
+    <Content Include="images\fuckyou.png" />
     <Content Include="morris.js-0.5.1\examples\area-as-line.html" />
     <Content Include="morris.js-0.5.1\examples\area.html" />
     <Content Include="morris.js-0.5.1\examples\bar-colors.html" />
@@ -437,11 +439,12 @@
     <Content Include="Views\Accountability\Add.cshtml" />
     <Content Include="Views\Clearance\Index.cshtml" />
     <Content Include="Views\Reports\Audit.cshtml" />
+    <Content Include="Views\Confirmation\Index.cshtml" />
+    <Content Include="Views\Accountability\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="uploads\student\" />
-    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

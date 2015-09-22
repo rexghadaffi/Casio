@@ -39,8 +39,8 @@ namespace DataAccessLayer
                 this._usernameField = "studentNumber";
             }
             else {
-                this._passwordField = "userName";
-                this._usernameField = "userPassword";
+                this._usernameField = "userName";
+                this._passwordField = "userPassword";
             }
 
             IsValidUser();

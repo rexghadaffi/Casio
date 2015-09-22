@@ -100,7 +100,7 @@ namespace DataAccessLayer
         public int GetIdForUser(string username)
         {
            return Convert.ToInt32(GetFieldID("tblcompanyuser", "userID", "userName", username));
-        }
+        }     
         #endregion    
 
     }

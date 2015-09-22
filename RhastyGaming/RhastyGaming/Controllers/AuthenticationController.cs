@@ -14,7 +14,24 @@ namespace RhastyGaming.Controllers
         //GET: /Authentication/
         public ActionResult Index()
         {
-            return View();
+            try
+            {
+                if (User.Identity.IsAuthenticated)
+                {
+                    AuthenticationContext db = new AuthenticationContext(new Authentication
+                    {
+                        Username = User.Identity.Name,
+                        Type = Session["role"].ToString()
+                    });
+                    return RedirectToAction("Index", db.LandingPage);
+                }
+                return View();
+            }
+            catch
+            {
+                FormsAuthentication.SignOut();
+                return View();
+            }
         }
         [HttpPost]
         public ActionResult Index(Authentication login)

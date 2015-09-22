@@ -7,7 +7,7 @@
     @Styles.Render("~/Content/css")
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading clearfix">
+        <div class="panel-heading clearfix text-center">
             STI College Cubao Clearance Form
         </div>
         <!-- Panel Content Goes Here..-->
@@ -20,6 +20,9 @@
                     <td>@Html.DisplayFor(model => Model.Student.StudentNumber)</td>
                     <td class="col-md-2"><strong>Year Level:</strong></td>
                     <td class="col-md-1">@Html.DisplayFor(model => Model.Student.Year)</td>
+                    <td rowspan="3">
+                        <img src="~/images/fuckyou.png" style="width:100%" class="img-responsive" />
+                    </td>
                 </tr>
                 <tr>
                     <td class="col-md-1"><strong>Firstname:</strong></td>
@@ -38,6 +41,7 @@
                     <td>@Html.DisplayFor(model => Model.Student.Status)</td>
                 </tr>
             </table>
+
             <table class="table table-bordered table-condensed">
                 <tr>
                     <td class="text-center"><strong>Department</strong></td>
@@ -51,6 +55,7 @@
                     </tr>
                 }
             </table>
+
         </div>
     </div>
 </div>
@@ -62,21 +67,24 @@
     </button>
 </div>
 <div id="editor"></div>
+<div id="logoShit">
+    <div class="pull-left">
 
+    </div>
+</div>
 
 @section Scripts {
     <script type="text/javascript">
         $('#btnPrint').click(function () {
-           
-
             $.ajax({
                 // Get Student PartialView
                 url: "/Clearance/IsCleared",
                 type: 'Get',
-                cache: false,     
-                success: function (data) {                   
-                    
+                cache: false,
+                success: function (data) {
+
                     var divToPrint = document.getElementById('clearanceContainer');
+                    var divLogo = document.getElementById('logoShit');
                     var popupWin = window.open('', '_blank', 'width=760,height=1024,location=no,left=200px');
                     popupWin.document.open();
                     popupWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + ' <div class="pull-right"> Confirmation Code: ' + data + '</div></body></html>');
@@ -86,12 +94,6 @@
                     $.notify('<strong>System Error!</strong> Something happened and the server is not responding.', { type: 'danger' });
                 }
             });
-
-          
-
-          
         });
     </script>
-
-
 }

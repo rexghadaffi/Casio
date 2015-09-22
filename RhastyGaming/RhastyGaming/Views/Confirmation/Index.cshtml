@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Model.Confirmation>
+
+@{
+    ViewBag.Title = "Confirmation Code";
+}
+
+<h2>List of Confirmation Code</h2>
+
+<table class="table-reports">
+    <thead>
+        <th>
+            @Html.DisplayNameFor(model => model.StudentNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ConfirmationCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>       
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>           
+            <td>
+                @Html.DisplayFor(modelItem => item.StudentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConfirmationCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>           
+        </tr>
+    }
+
+</table>

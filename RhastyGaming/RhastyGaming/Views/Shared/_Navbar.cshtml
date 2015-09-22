@@ -1,4 +1,5 @@
-﻿<nav class="navbar navbar-default" role="navigation">
+﻿@using DataAccessLayer;
+<nav class="navbar navbar-default" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -7,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><span class="fa fa-home"></span>&nbsp;Online Clearance</a>
+        <a class="navbar-brand" href="#"><span class="fa fa-home"></span>&nbsp;Web-Based Clearance</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     @if (User.Identity.IsAuthenticated)
@@ -16,6 +17,7 @@
             @if (User.IsInRole("tblcompanyuser"))
             {
                 <ul class="nav navbar-nav">
+                    <li><a href="/Home/"><span class="fa fa-dashboard fa-fw"></span>&nbsp;Dashboard</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-wrench fa-fw"></span>&nbsp;Maintenance <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -26,24 +28,37 @@
                             <li><a href="/Student/">Student</a></li>
                         </ul>
                     </li>
-                    <li><a href="/Reports/Audit/"><span class="fa fa-file-archive-o fa-fw"></span>&nbsp;Reports</a></li>                   
+                    <li><a href="/Reports/Audit/"><span class="fa fa-file-archive-o fa-fw"></span>&nbsp;Reports</a></li>
                 </ul>
-                if(User.IsInRole("tblemployee"))
+            }
+            else if (User.IsInRole("tblemployee"))
+            {
+                if (ViewBag.IsRegistrar)
                 {
-                    <li><a href="/Accountability/">Accountability</a></li>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/Accountability/">Accountability</a></li>
+                        <li><a href="/Confirmation/">Validate Code</a></li>
+                    </ul>
                 }
-                if(User.IsInRole("tblstudent"))
+                else
                 {
-                    <li><a href="/Clearance/">Clearance</a></li>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/Accountability/">Accountability</a></li>
+                    </ul>
                 }
             }
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Welcome, @if (ViewBag.Lastname != null)
-                                         {
-                                             @ViewBag.Lastname
-                                         }
-                                         else { @User.Identity.Name } </a></li>
+                <li>
+                    <a href="#">
+                        Welcome, @if (ViewBag.Lastname != null)
+                        {
+                            @ViewBag.Lastname
+                        }
+                        else
+                        { @User.Identity.Name }
+                    </a>
+                </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span>&nbsp;Settings <b class="caret"></b></a>
                     <ul class="dropdown-menu">

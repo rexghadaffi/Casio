@@ -46,6 +46,7 @@
     <Compile Include="Audit.cs" />
     <Compile Include="Authentication.cs" />
     <Compile Include="ClearanceViewModel.cs" />
+    <Compile Include="Confirmation.cs" />
     <Compile Include="Department.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Roles.cs" />

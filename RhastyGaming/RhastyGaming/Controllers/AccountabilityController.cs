@@ -13,26 +13,47 @@ namespace RhastyGaming.Controllers
     {
         private EmployeeContext dbEmployee = new EmployeeContext();
         private DepartmentContext dbDepartment = new DepartmentContext();
-        private AccountabilitiesContext dbContext = new AccountabilitiesContext();       
+        private AccountabilitiesContext dbContext = new AccountabilitiesContext();
         //
         // GET: /Accountability/
         public ActionResult Index()
-        {          
+        {
+
+            ViewBag.IsRegistrar = dbEmployee.GetDepartmentName(dbEmployee.GetDepartmentID(User.Identity.Name));            
             return View();
         }
         public ActionResult ShowModal(string snum)
         {
             SelectDropDown(dbEmployee.GetDepartmentID(User.Identity.Name));
+            if (dbContext.Fetch.Where(s => s.StudentNumber == snum).Count() > 0)
+            {
+                return PartialView("~/Views/Accountability/Edit.cshtml",
+                    dbContext.Fetch.Single(s => s.StudentNumber == snum));
+            }
             return PartialView("~/Views/Accountability/Add.cshtml",
                                new Accountability { StudentNumber = snum });
         }
         [HttpPost]
         public ActionResult AddNew(Accountability data)
-        {           
+        {
             if (ModelState.IsValid)
             {
                 data.DepartmentID = dbEmployee.GetDepartmentID(User.Identity.Name);
-                dbContext.AddAccountability(data);                
+                dbContext.AddAccountability(data);
+            }
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public ActionResult Edit(int id, Accountability data)
+        {
+            if (ModelState.IsValid)
+            {
+                data.DepartmentID = dbEmployee.GetDepartmentID(User.Identity.Name);
+                if (data.Status)
+                {
+                    dbContext.DisableConfirmationCode(data.StudentNumber);
+                }
+                dbContext.EditAccountability(data, id);
             }
             return RedirectToAction("Index");
         }
@@ -41,7 +62,7 @@ namespace RhastyGaming.Controllers
             ViewBag.DepartmentID = new SelectList(dbDepartment.GetAllDepartment,
                                            "ID",
                                            "Name",
-                                           departmentID);          
+                                           departmentID);
         }
         [HttpPost]
         public ActionResult Upload(HttpPostedFileBase file)
@@ -52,5 +73,5 @@ namespace RhastyGaming.Controllers
             }
             return RedirectToAction("Index");
         }
-	}
+    }
 }

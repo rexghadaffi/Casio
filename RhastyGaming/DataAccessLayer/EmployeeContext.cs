@@ -108,6 +108,18 @@ namespace DataAccessLayer
         {
             return Convert.ToInt32(GetFieldID("tblemployee", "departmentID", "userName", username));
         }
+
+        public bool GetDepartmentName(int id)
+        {
+            string name = GetFieldID("tbldepartment",
+                              "departmentName",
+                              "departmentID", id).ToString();
+            if (name == "Registrar")
+            {
+                return true;   
+            }
+            return false;
+        }
         #endregion 
 
     }

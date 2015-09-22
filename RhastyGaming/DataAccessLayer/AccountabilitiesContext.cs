@@ -24,7 +24,8 @@ namespace DataAccessLayer
                 return new List<string> {
                      "description",
                      "studentNumber",
-                     "departmentID"
+                     "departmentID",
+                     "status"
                      };
             }
         }
@@ -68,6 +69,16 @@ namespace DataAccessLayer
             ExecuteNonQuery(QueryBuilder.Insert(_tableName, TargetFields), SetParams(data));
         }
 
+        public void EditAccountability(Accountability data, int id)
+        {
+            ExecuteNonQuery(QueryBuilder.Update(_tableName, TargetFields, id, _pkField), SetParams(data));
+        }
+
+        public void DisableConfirmationCode(string studentNumber)
+        {
+            StoredProc("disable_code", studentNumber);
+        }
+
         public string MassUpload(HttpPostedFileBase excelFile, int departmentID)
         {
             try
@@ -97,7 +108,7 @@ namespace DataAccessLayer
             result.Add("@description", data.Description);
             result.Add("@studentNumber", data.StudentNumber);
             result.Add("@departmentID", data.DepartmentID);
-
+            result.Add("@status", data.Status);
             return result;
         }
 

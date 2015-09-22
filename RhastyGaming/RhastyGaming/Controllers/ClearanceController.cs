@@ -29,9 +29,8 @@ namespace RhastyGaming.Controllers
             if (count <= 0)
             {
                 return dbContext.RetrieveConfirmationCode(User.Identity.Name);                        
-            }           
-
-            return "You still have pending accountabilities";
+            }          
+            return "You Still Have Pending Accountabilities";
         }
 	}
 }

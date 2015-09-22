@@ -34,7 +34,7 @@
             toolbarAlign: 'left',
             toolbar: '#accountabilityToolbar',
             pageList: [10, 20, 50, 100],
-            onDblClickRow: function (row, $element) {
+            onClickRow: function (row, $element) {
                 var key = row["StudentNumber"];
                 ShowModal(key);
             }

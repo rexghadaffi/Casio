@@ -57,7 +57,20 @@ namespace DataAccessLayer
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 strConn.Open();
-                return result = Convert.ToInt32(cmd.ExecuteScalar());
+                return result = Convert.ToInt32(cmd.ExecuteScalar());              
+            }
+        }
+
+        protected virtual void StoredProc(string paramName, string paramValue)
+        {           
+            using (MySqlConnection strConn = MySqlConn)
+            {
+                MySqlCommand cmd = new MySqlCommand(paramName, strConn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@snum", paramValue);
+                strConn.Open();
+                cmd.ExecuteNonQuery();
+                strConn.Close();
             }
         }
 
@@ -106,6 +119,7 @@ namespace DataAccessLayer
                 {
                     result = Convert.ToInt32(rd[fieldname]);
                 }
+                strConn.Close();
             }
             return result;
         }
